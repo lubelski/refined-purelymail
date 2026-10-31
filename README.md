@@ -8,7 +8,7 @@ is preserved in `reference/refined-purelymail.zip`.
 
 ## Scope
 
-A Manifest V3, CSS-only extension for `https://purelymail.com/*`. It improves
+A Manifest V3, CSS-only extension for `https://purelymail.com/manage` and its child paths (including query strings). It improves
 spacing, forms, tables, and keyboard focus without replacing native controls.
 It does not change account logic or fix workflow behavior. Subdomains (including
 webmail) and HTTP are intentionally excluded. There is no background worker,

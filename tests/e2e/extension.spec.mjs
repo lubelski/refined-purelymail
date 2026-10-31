@@ -36,7 +36,7 @@ test("loads CSS through Chrome's manifest without external requests", async ({
 }) => {
   const requests = [];
   page.on("request", (request) => requests.push(request.url()));
-  await page.goto("https://purelymail.com/account");
+  await page.goto("https://purelymail.com/manage/account");
   await expect(page.locator("body")).toHaveCSS(
     "background-color",
     "rgb(247, 247, 251)",
@@ -46,22 +46,38 @@ test("loads CSS through Chrome's manifest without external requests", async ({
     "background-color",
     "rgb(109, 63, 216)",
   );
-  expect(requests).toEqual(["https://purelymail.com/account"]);
+  expect(requests).toEqual(["https://purelymail.com/manage/account"]);
 });
 for (const url of [
+  "https://purelymail.com/",
+  "https://purelymail.com/login",
+  "https://purelymail.com/management",
+  "https://purelymail.com/manage-other",
   "https://example.org/",
   "https://webmail.purelymail.com/",
-  "http://purelymail.com/",
+  "http://purelymail.com/manage",
+  "https://webmail.purelymail.com/manage",
 ]) {
   test(`does not inject on ${url}`, async ({ page }) => {
     await page.goto(url);
     await expect(page.locator("form")).toHaveCSS("border-radius", "0px");
   });
 }
+for (const path of [
+  "/manage",
+  "/manage?tab=users",
+  "/manage/",
+  "/manage/users?sort=name",
+]) {
+  test(`injects on ${path}`, async ({ page }) => {
+    await page.goto(`https://purelymail.com${path}`);
+    await expect(page.locator("form")).toHaveCSS("border-radius", "14px");
+  });
+}
 test("keyboard navigation and native form behavior survive styling", async ({
   page,
 }) => {
-  await page.goto("https://purelymail.com/account");
+  await page.goto("https://purelymail.com/manage/account");
   await page.keyboard.press("Tab");
   await expect(
     page.getByRole("link", { name: "Account", exact: true }),
@@ -78,7 +94,7 @@ test("keyboard navigation and native form behavior survive styling", async ({
 test("dark theme, reduced motion, and narrow layout", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("https://purelymail.com/account");
+  await page.goto("https://purelymail.com/manage/account");
   await page.locator("html").evaluate((el) => (el.dataset.theme = "dark"));
   await expect(page.locator("body")).toHaveCSS(
     "background-color",

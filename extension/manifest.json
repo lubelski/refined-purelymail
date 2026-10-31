@@ -5,7 +5,11 @@
   "description": "A cleaner, more modern look for the Purelymail dashboard.",
   "content_scripts": [
     {
-      "matches": ["https://purelymail.com/*"],
+      "matches": [
+        "https://purelymail.com/manage",
+        "https://purelymail.com/manage?*",
+        "https://purelymail.com/manage/*"
+      ],
       "css": ["styles.css"],
       "run_at": "document_start"
     }

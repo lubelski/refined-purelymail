@@ -21,7 +21,11 @@ test("MV3 CSS-only, exact host, no privileged APIs", async () => {
   ]);
   assert.deepEqual(manifest.content_scripts, [
     {
-      matches: ["https://purelymail.com/*"],
+      matches: [
+        "https://purelymail.com/manage",
+        "https://purelymail.com/manage?*",
+        "https://purelymail.com/manage/*",
+      ],
       css: ["styles.css"],
       run_at: "document_start",
     },

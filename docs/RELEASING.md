@@ -7,8 +7,8 @@ Publishing is manual. CI produces candidate artifacts; it does not publish them.
 - [ ] Select a license and verify rights to the original ZIP and all assets.
 - [ ] Configure the GitHub remote, enable Actions, and require the CI job in branch protection.
 - [ ] Validate actual authenticated pages using [TESTING.md](TESTING.md).
-- [ ] Decide whether whole-origin styling is appropriate; narrow paths if live-page
-      testing shows public/login pages should not be changed. Keep subdomains excluded.
+- [ ] Confirm styling stays within `/manage` and its child paths; public/login
+      pages and subdomains must remain unchanged.
 - [ ] Resolve accessibility findings, including contrast and forced-color behavior.
 - [ ] Create original extension icons (16/32/48/128px), add manifest entries, extend
       the build allowlist and package tests, and verify the installed appearance.

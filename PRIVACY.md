@@ -5,7 +5,7 @@ Draft for review before publishing.
 Refined Purelymail is an independent extension, not a Purelymail product.
 
 The extension applies a locally packaged stylesheet to HTTPS pages on
-purelymail.com. It does not collect, store, or transmit personal information,
+purelymail.com under `/manage` only. It does not collect, store, or transmit personal information,
 email content, credentials, browsing history, or analytics. It contains no
 runtime JavaScript, background service, advertising, or remote resources.
 
