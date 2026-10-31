@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Refined Purelymail",
+  "version": "0.1.0",
+  "description": "A cleaner, more modern look for the Purelymail dashboard.",
+  "content_scripts": [
+    {
+      "matches": ["https://purelymail.com/*"],
+      "css": ["styles.css"],
+      "run_at": "document_start"
+    }
+  ]
+}

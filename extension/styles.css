@@ -1,0 +1,313 @@
+/* Refined Purelymail */
+
+/* System fonts only: no third-party network requests. */
+
+:root,
+[data-theme="light"] {
+  --pm-bg: #f7f7fb;
+  --pm-surface: #fff;
+  --pm-text: #1c1a24;
+  --pm-muted: #6b6878;
+  --pm-border: #e6e4ee;
+  --pm-accent: #6d3fd8;
+  --pm-accent-hover: #5a2fc0;
+  --pm-accent-soft: #f0eafd;
+  --pm-shadow: 0 1px 2px rgb(20 10 50 / 4%), 0 4px 16px rgb(20 10 50 / 6%);
+}
+
+[data-theme="dark"] {
+  --pm-bg: #121117;
+  --pm-surface: #1b1a22;
+  --pm-text: #ecebf2;
+  --pm-muted: #9a97a8;
+  --pm-border: #2c2a36;
+  --pm-accent: #9b7bf0;
+  --pm-accent-hover: #ad92f4;
+  --pm-accent-soft: #2a2340;
+  --pm-shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 4px 16px rgb(0 0 0 / 30%);
+}
+
+html,
+body {
+  font-family: -apple-system, system-ui, "Segoe UI", sans-serif !important;
+  background: var(--pm-bg) !important;
+  color: var(--pm-text) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: inherit !important;
+  letter-spacing: -0.02em;
+  font-weight: 650;
+}
+
+h1 {
+  font-size: 1.75rem;
+}
+
+/* Preserve a visible keyboard indicator for every interactive control. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--pm-accent) !important;
+  outline-offset: 3px;
+}
+
+/* Top header */
+header {
+  background: color-mix(in srgb, var(--pm-surface) 85%, transparent) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--pm-border) !important;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 6px 0;
+}
+
+header nav a {
+  text-transform: none !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: var(--pm-muted) !important;
+  background: transparent !important;
+  border-radius: 8px !important;
+  transition:
+    color 0.15s,
+    background 0.15s;
+}
+
+header nav a:hover {
+  color: var(--pm-text) !important;
+  background: var(--pm-accent-soft) !important;
+}
+
+header nav a.bg-pm-purple-400 {
+  color: var(--pm-accent) !important;
+  background: var(--pm-accent-soft) !important;
+}
+
+/* Sidebar */
+.w5-ns {
+  background: var(--pm-surface) !important;
+  border-color: var(--pm-border) !important;
+  gap: 2px;
+}
+
+.w5-ns > a {
+  color: var(--pm-text) !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.w5-ns > a:hover {
+  background: var(--pm-accent-soft) !important;
+  color: var(--pm-accent) !important;
+}
+
+.w5-ns .f6,
+.w5-ns .mt3 {
+  color: var(--pm-muted) !important;
+}
+
+/* Main content as a card column */
+main {
+  padding: 2rem 2.5rem !important;
+}
+
+main input,
+main select,
+main textarea {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+@media (width <= 600px) {
+  main {
+    padding: 1rem !important;
+  }
+
+  main form {
+    padding: 1rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header nav a,
+  .w5-ns > a,
+  input,
+  select,
+  textarea,
+  button {
+    transition: none !important;
+  }
+}
+
+main > div,
+main form {
+  max-width: 760px;
+}
+
+main form {
+  background: var(--pm-surface);
+  border: 1px solid var(--pm-border);
+  border-radius: 14px;
+  box-shadow: var(--pm-shadow);
+  padding: 1.5rem 1.75rem;
+}
+
+main hr {
+  border: 0;
+  border-top: 1px solid var(--pm-border);
+  margin: 2rem 0;
+}
+
+/* Labels */
+label,
+.ttu {
+  letter-spacing: 0.02em;
+}
+
+main label.b,
+main .f7.b {
+  color: var(--pm-muted);
+  font-weight: 600;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  background: var(--pm-surface) !important;
+  color: var(--pm-text) !important;
+  border: 1px solid var(--pm-border) !important;
+  border-radius: 8px !important;
+  padding: 9px 12px !important;
+  font: inherit !important;
+  outline: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--pm-accent) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--pm-accent) 20%, transparent) !important;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--pm-accent);
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+/* Buttons */
+button.bg-pm-purple-500,
+input[type="submit"] {
+  background: var(--pm-accent) !important;
+  color: #fff !important;
+  border: 1px solid transparent !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  padding: 9px 16px !important;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
+  transition:
+    background 0.15s,
+    transform 0.05s;
+}
+
+button.bg-pm-purple-500:hover {
+  background: var(--pm-accent-hover) !important;
+}
+
+button.bg-pm-purple-500:active {
+  transform: translateY(1px);
+}
+
+/* Secondary (Cancel) */
+button.bg-black-10 {
+  background: transparent !important;
+  color: var(--pm-text) !important;
+  border: 1px solid var(--pm-border) !important;
+  box-shadow: none;
+}
+
+button.bg-black-10:hover {
+  background: var(--pm-accent-soft) !important;
+}
+
+/* Links */
+main a {
+  color: var(--pm-accent);
+}
+
+.black-60 {
+  color: var(--pm-muted) !important;
+}
+
+/* Tables (users, domains lists) */
+table {
+  border-collapse: separate !important;
+  border-spacing: 0;
+  width: 100%;
+  background: var(--pm-surface);
+  border: 1px solid var(--pm-border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--pm-shadow);
+}
+
+th {
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--pm-muted);
+  background: var(--pm-bg);
+}
+
+th,
+td {
+  padding: 10px 14px !important;
+  border-bottom: 1px solid var(--pm-border) !important;
+}
+
+tr:last-child td {
+  border-bottom: 0 !important;
+}
+
+tbody tr:hover {
+  background: var(--pm-accent-soft);
+}
+
+/* Forms laid out with tables: keep them flat */
+form table {
+  border: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+form td,
+form th {
+  border-bottom: 0 !important;
+  padding: 6px 0 !important;
+  background: transparent !important;
+}
+
+form tbody tr:hover {
+  background: transparent;
+}

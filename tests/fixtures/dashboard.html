@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Synthetic dashboard fixture</title>
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Primary">
+        <a href="#account">Account</a> <a href="#domains">Domains</a>
+      </nav>
+    </header>
+    <aside class="w5-ns"><a href="#users">Users</a></aside>
+    <main>
+      <h1>Account settings</h1>
+      <p>This is synthetic markup, not a captured Purelymail page.</p>
+      <form action="/saved" method="get">
+        <p>
+          <label for="email">Email</label><br /><input
+            id="email"
+            name="email"
+            type="email"
+            required
+            value="demo@example.test"
+          />
+        </p>
+        <p>
+          <label for="password">Password</label><br /><input
+            id="password"
+            type="password"
+          />
+        </p>
+        <p>
+          <label for="plan">Plan</label>
+          <select id="plan" name="plan">
+            <option>Basic</option>
+            <option>Advanced</option>
+          </select>
+        </p>
+        <p>
+          <label><input type="checkbox" name="enabled" /> Enabled</label>
+        </p>
+        <p>
+          <label for="notes">Notes</label><br /><textarea id="notes"></textarea>
+        </p>
+        <button class="bg-pm-purple-500" type="submit">Save</button>
+        <button class="bg-black-10" type="reset">Cancel</button>
+      </form>
+      <h2>Domains</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Domain</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>example.test</td>
+            <td>Verified</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

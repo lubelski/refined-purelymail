@@ -1,0 +1,6 @@
+reference/
+package-lock.json
+dist/
+artifacts/
+playwright-report/
+test-results/

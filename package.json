@@ -1,0 +1,29 @@
+{
+  "name": "refined-purelymail",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "lint": "eslint . && stylelint 'extension/**/*.css'",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test:unit": "node --test tests/unit/*.test.mjs",
+    "test:e2e": "npm run build && playwright test",
+    "test": "npm run test:unit && npm run test:e2e",
+    "check": "npm run lint && npm run format:check && npm test",
+    "package": "npm run check && npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.64.1",
+    "eslint": "^10.14.0",
+    "fflate": "^0.8.3",
+    "prettier": "^3.9.10",
+    "stylelint": "^17.16.0",
+    "stylelint-config-standard": "^40.0.0"
+  }
+}
