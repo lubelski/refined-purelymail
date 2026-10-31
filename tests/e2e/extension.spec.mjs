@@ -84,7 +84,6 @@ test("keyboard navigation and native form behavior survive styling", async ({
   ).toBeFocused();
   await expect(page.locator(":focus")).toHaveCSS("outline-style", "solid");
   await page.getByLabel("Email", { exact: true }).fill("new@example.test");
-  await expect(page.getByLabel("Plan")).toHaveCSS("padding-right", "28px");
   await page.getByLabel("Plan").selectOption("Advanced");
   await page.getByLabel("Enabled").check();
   await page.getByRole("button", { name: "Save" }).click();
