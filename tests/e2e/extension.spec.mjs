@@ -91,6 +91,35 @@ test("keyboard navigation and native form behavior survive styling", async ({
     /\/saved\?email=new%40example.test&plan=Advanced&enabled=on$/,
   );
 });
+for (const selector of ["header nav a", ".w5-ns > a"]) {
+  for (const marker of ["class", "aria-current"]) {
+    test(`selected ${selector} (${marker}) wins over hover`, async ({
+      page,
+    }) => {
+      await page.emulateMedia({ reducedMotion: "reduce" });
+      await page.goto("https://purelymail.com/manage");
+      const link = page.locator(selector).first();
+      await link.evaluate((el, marker) => {
+        if (marker === "class") el.classList.add("bg-pm-purple-400");
+        else el.setAttribute("aria-current", "page");
+      }, marker);
+      for (const theme of ["light", "dark"]) {
+        await page
+          .locator("html")
+          .evaluate((el, theme) => (el.dataset.theme = theme), theme);
+        const before = await link.evaluate((el) => ({
+          color: el.ownerDocument.defaultView.getComputedStyle(el).color,
+          background:
+            el.ownerDocument.defaultView.getComputedStyle(el).backgroundColor,
+        }));
+        await link.hover();
+        await expect(link).toHaveCSS("color", before.color);
+        await expect(link).toHaveCSS("background-color", before.background);
+        await page.mouse.move(0, 0);
+      }
+    });
+  }
+}
 test("dark theme, reduced motion, and narrow layout", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.emulateMedia({ reducedMotion: "reduce" });

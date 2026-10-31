@@ -81,12 +81,13 @@ header nav a {
     background 0.15s;
 }
 
-header nav a:hover {
+header nav a:not(.bg-pm-purple-400, [aria-current="page"]):hover {
   color: var(--pm-text) !important;
   background: var(--pm-accent-soft) !important;
 }
 
-header nav a.bg-pm-purple-400 {
+header nav a.bg-pm-purple-400,
+header nav a[aria-current="page"] {
   color: var(--pm-accent) !important;
   background: var(--pm-accent-soft) !important;
 }
@@ -108,7 +109,14 @@ header nav a.bg-pm-purple-400 {
     color 0.15s;
 }
 
-.w5-ns > a:hover {
+.w5-ns > a:not(.bg-pm-purple-400, [aria-current="page"]):hover {
+  background: var(--pm-accent-soft) !important;
+  color: var(--pm-accent) !important;
+}
+
+/* Selected navigation keeps its appearance even while hovered. */
+.w5-ns > a.bg-pm-purple-400,
+.w5-ns > a[aria-current="page"] {
   background: var(--pm-accent-soft) !important;
   color: var(--pm-accent) !important;
 }
